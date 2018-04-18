@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+/***************全局样式***************/
+html , body , app-root{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+*{
+    box-sizing: border-box;
+}
+.fill-remaining-space{
+    flex: 1 1 auto;
+}
+.full-width{
+    width: 100%;
+}
+.full-height{
+    height: 100%;
+}
+//水平居中
+.horizontal-center{
+    display: flex;
+    flex-direction: row !important;
+    justify-content: center ;
+}
+//上下居中
+.up-down-center{
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center ;
+}
+.text-right{
+    text-align: right;
+}
