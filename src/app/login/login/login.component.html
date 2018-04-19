@@ -11,11 +11,11 @@
               <mat-input-container class="full-width">
                       <input matInput type="password" placeholder="您的密码" >
               </mat-input-container>
-              <button type="button" mat-raised-button>登录</button>
+              <button type="button" mat-raised-button (click)="doLogin()">登录</button>
           </mat-card-content>
           <mat-card-actions class="text-right">
               <p>还没注册？<a  routerLink="/register">注册</a></p>
-              <p>忘记密码？<a href="">找回</a></p>
+              <p>忘记密码？<a routerLink="/forget-password">找回</a></p>
           </mat-card-actions>
         </mat-card>
    

@@ -4,7 +4,9 @@ import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
     { path: '',redirectTo:'/login',pathMatch:'full'},
-    // { path: 'project',redirectTo:'/project',pathMatch:'full'},
+    { path: 'register',redirectTo:'/register',pathMatch:'full'},
+    { path: 'forget-password',redirectTo:'/forget-password',pathMatch:'full'},
+    { path: 'home',redirectTo:'/home',pathMatch:'full'},
 ]
 @NgModule({
     imports: [CommonModule, RouterModule.forRoot(routes)],

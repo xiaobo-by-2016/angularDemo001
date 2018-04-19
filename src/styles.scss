@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/****************material样式修改***************/
+.mat-card-header-text{
+    margin: 0 !important;
+}
 
 
 /***************全局样式***************/
