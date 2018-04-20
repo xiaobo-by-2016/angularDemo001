@@ -1,3 +1,17 @@
 <div class="home">
-
+    <header>
+            <app-header (sideMenuToggle)="sidenav.toggle()"></app-header>
+    </header>
+        
+  <main class="fill-remaining-space">
+        <mat-sidenav-container class="fill-remaining-space">
+            <mat-sidenav #sidenav mode="side">
+                <app-side-menu ></app-side-menu>
+            </mat-sidenav>
+            
+            <mat-sidenav-content class="fill-remaining-space" >
+                jjjj
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+   </main>
 </div>

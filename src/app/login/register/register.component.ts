@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class RegisterComponent implements OnInit {
 
 
-  private valideteCodeInfo :any={
+  public valideteCodeInfo :any={
     status:true,  //true可以点击获取验证码
     info:'获取验证码'
   }

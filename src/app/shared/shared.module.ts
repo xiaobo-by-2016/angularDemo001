@@ -3,21 +3,32 @@ import {  CommonModule } from '@angular/common';
 import {  MatCardModule, 
           MatInputModule,
           MatButtonModule,
-          MatIconModule} from '@angular/material';
+          MatIconModule,
+          MatSidenavModule,
+          MatToolbarModule,
+          MatListModule} from '@angular/material';
 @NgModule({
   imports: [
     CommonModule,
     MatCardModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatListModule
   ],
   declarations: [],
   exports:[
     MatCardModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatListModule
   ]
 })
 export class SharedModule { }
