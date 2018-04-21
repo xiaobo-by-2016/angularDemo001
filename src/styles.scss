@@ -4,6 +4,18 @@
 .mat-card-header-text{
     margin: 0 !important;
 }
+.mat-tab-body-wrapper{
+    flex: 1;
+}
+.mat-tab-label{
+    flex: 1 ;
+}
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+    border-color: #3f51b5;
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+    background-color: cornflowerblue;
+}
 
 
 /***************全局样式***************/
@@ -15,8 +27,15 @@ html , body , app-root{
 *{
     box-sizing: border-box;
 }
+.flex-column{
+    display: flex !important;
+    flex-direction: column !important;
+}
 .fill-remaining-space{
     flex: 1 1 auto;
+}
+.fill-remaining-space0{
+    flex: 1 1 0;
 }
 .full-width{
     width: 100%;
@@ -38,4 +57,13 @@ html , body , app-root{
 }
 .text-right{
     text-align: right;
+}
+
+
+.margin-left-16{
+    margin-left: 16px;
+  
+}
+.padding-left{
+    padding-left: 15px
 }

@@ -4,13 +4,12 @@
     </header>
         
   <main class="fill-remaining-space">
-        <mat-sidenav-container class="fill-remaining-space">
-            <mat-sidenav #sidenav mode="side">
-                <app-side-menu ></app-side-menu>
+        <mat-sidenav-container class="fill-remaining-space flex-column">
+            <mat-sidenav #sidenav mode="push" >
+                <app-side-menu (selectMenuItem)="sidenav.toggle();showRightCom($event)"></app-side-menu>
             </mat-sidenav>
-            
-            <mat-sidenav-content class="fill-remaining-space" >
-                jjjj
+            <mat-sidenav-content class="fill-remaining-space0 flex-column">
+                    <router-outlet ></router-outlet>
             </mat-sidenav-content>
         </mat-sidenav-container>
    </main>
