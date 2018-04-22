@@ -1,6 +1,6 @@
 <mat-toolbar>
       <mat-toolbar-row>
-        <button mat-icon-button (click)="openSidenMenu()">
+        <button [disabled]="isDisabled" mat-icon-button (click)="openSidenMenu()">
               <mat-icon>menu</mat-icon>
         </button>
         <span>毕业设计进度管理系统</span>

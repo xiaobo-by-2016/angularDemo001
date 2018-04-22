@@ -9,7 +9,9 @@ import {  MatCardModule,
           MatListModule,
           MatTabsModule,
           MatRadioModule,
-          MatSelectModule,} from '@angular/material';
+          MatSelectModule,
+          MatExpansionModule,
+          MatTableModule,} from '@angular/material';
 @NgModule({
   imports: [
     CommonModule,
@@ -24,6 +26,8 @@ import {  MatCardModule,
     MatTabsModule,
     MatRadioModule,
     MatSelectModule,
+    MatExpansionModule,
+    MatTableModule
   ],
   declarations: [],
   exports:[
@@ -38,6 +42,8 @@ import {  MatCardModule,
     MatTabsModule,
     MatRadioModule,
     MatSelectModule,
+    MatExpansionModule,
+    MatTableModule
   ]
 })
 export class SharedModule { }
