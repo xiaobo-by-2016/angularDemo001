@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   private width :number = window.screen.availWidth;
-  private navMode :string = 'side';
+  public navMode :string = 'side';
   constructor(private router:Router) {}
   
   ngOnInit() {

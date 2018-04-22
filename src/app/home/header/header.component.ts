@@ -8,7 +8,7 @@ import { Component, OnInit, Output ,EventEmitter} from '@angular/core';
 export class HeaderComponent implements OnInit {
   @Output() sideMenuToggle = new EventEmitter<void>();
   private width :number = window.screen.availWidth;
-  private isDisabled: boolean = true;
+  public isDisabled: boolean = true;
   constructor() { 
     
   }
