@@ -15,6 +15,8 @@
     right: 10px;
     bottom: 10px;
     z-index: 998;
+    background-color: white;
+    color: #3f51b5;
 }
 .box{
     width: 100%;
@@ -24,6 +26,27 @@
     flex: 1 1 0;
     overflow-y: auto;
     border: 1px solid rgba(0,0,0,.12);
+}
+.box1{
+    width: 100%;
+    padding: 10px 0;
+    max-width: 800px;
+    height: auto;
+    float: left;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    input{
+       width: 60%;;
+       margin-right: 15px;
+       padding-left: 10px;
+       background-color: transparent;
+       border: 0;
+       border-bottom: 1px solid rgba(0,0,0,.12);
+    }
+  
 }
 
 .example-container {

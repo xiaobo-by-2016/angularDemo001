@@ -19,6 +19,11 @@
 
 
 /***************全局样式***************/
+input:focus{
+    outline-width: 0;
+}
+
+
 html , body , app-root{
     height: 100%;
     width: 100%;
