@@ -5,7 +5,7 @@ import { LoginRoutingModule } from './login-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { RegisterComponent } from './register/register.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
-
+import { FormsModule }   from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,

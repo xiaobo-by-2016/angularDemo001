@@ -12,6 +12,7 @@ import {  MatCardModule,
           MatSelectModule,
           MatExpansionModule,
           MatTableModule,} from '@angular/material';
+import { FormsModule,  ReactiveFormsModule }   from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,
@@ -27,7 +28,9 @@ import {  MatCardModule,
     MatRadioModule,
     MatSelectModule,
     MatExpansionModule,
-    MatTableModule
+    MatTableModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [],
   exports:[
@@ -43,7 +46,9 @@ import {  MatCardModule,
     MatRadioModule,
     MatSelectModule,
     MatExpansionModule,
-    MatTableModule
+    MatTableModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
