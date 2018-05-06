@@ -16,6 +16,9 @@
         </mat-input-container>
         <mat-input-container class="full-width">
           <input formControlName="userPhone" matInput type="text" placeholder="请输入手机号" >
+          <span [hidden]="!registerFormModel.hasError('mobile','userPhone')">
+            {{registerFormModel.getError('require','userPhone')?.errInfo }}
+          </span>
         </mat-input-container>
         <mat-input-container class="full-width">
           <input matInput type="text" placeholder="请输入验证码" >
