@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from '../../utils/http.service';
-import { mobileValidator, requiredSelf } from '../../utils/validators';
+import { 
+  mobileValidator, 
+  requiredSelf, 
+  lengthValidator, 
+  equalValidator } from '../../utils/validators';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -25,32 +29,53 @@ export class RegisterComponent implements OnInit {
     fb: FormBuilder) {
 
     this.registerFormModel = fb.group({
-      userPhone: ['',[requiredSelf('手机号'),mobileValidator()]]
+      userAccount: ['', [lengthValidator('账号最小长度12,最大长度20', 12, 20)]],
+      passwordsGroup: fb.group({
+        userPassword: ['', [lengthValidator('密码最小长度6,最大长度12', 6, 12)]],
+        upConfirm: [''],
+      }, { validator: equalValidator('密码与确认密码', 'userPassword', 'upConfirm') }),
+      userRoleId: ['2'],
+      userPhone: ['', [requiredSelf('手机号不能为空'), mobileValidator()]],
+      code: ['', [requiredSelf('验证码不能为空')]]
     })
 
   }
 
   ngOnInit() {
   }
-  getValidateCdoe() {
-    if (this.valideteCodeInfo.status) {
-      this.timeHandler(60);
-    }
-    this.isGetCode = true;
-    this.httpService.doPost(
-      {
-        userPhone: this.registerFormModel.get('userPhone').value,
-        smsActnStat:1
-      }, 'sendSmsCode').subscribe(res => {
-        if (res.success) {
-          console.log(res);
-        } else {
-          console.log(res.message);
-        }
-      })
-  }
-  timeHandler(count: number) {
 
+  /**
+   * 验证码获取
+   */
+  getValidateCdoe() {
+    
+    if (this.registerFormModel.get('userPhone').valid) {
+      if (this.valideteCodeInfo.status) {
+        this.timeHandler(60);
+      }
+      this.isGetCode = true;
+      this.httpService.doPost(
+        {
+          userPhone: this.registerFormModel.get('userPhone').value,
+          smsActnStat: 1
+        }, 'sendSmsCode').subscribe(res => {
+          if (res.success) {
+            console.log(res);
+          } else {
+            console.log(res.message);
+          }
+        })
+    }else{
+      alert('手机号不能为空')
+    }
+
+  }
+
+  /**
+   * 倒计时
+   * @param count 
+   */
+  timeHandler(count: number) {
     if (this.valideteCodeInfo.status) {
       this.valideteCodeInfo.status = !this.valideteCodeInfo.status;
       this.valideteCodeInfo.info = `${count} s`;
@@ -66,6 +91,30 @@ export class RegisterComponent implements OnInit {
         }
       }, 1000)
     }
+  }
 
+  /**
+   * 注册
+   */
+  onSubmit() {
+    if (this.registerFormModel.valid) {
+      this.httpService.doPost(
+        {
+          userAccount: this.registerFormModel.value.userAccount,
+          userPassword: this.registerFormModel.value.passwordsGroup.userPassword,
+          userRoleId: this.registerFormModel.value.userRoleId,
+          userPhone: this.registerFormModel.value.userPhone,
+          code: this.registerFormModel.value.code
+        }, 'register').subscribe(res => {
+          if (res.success) {
+              console.log(res);
+              this.router.navigate(['/login']);
+          } else {
+            console.log(res.message);
+          }
+        })
+    } else {
+      console.log(this.registerFormModel.value)
+    }
   }
 }

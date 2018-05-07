@@ -6,37 +6,50 @@
     </mat-card-header>
     <mat-card-content>
       <mat-form-field class="full-width">
-        <input matInput type="text" placeholder="您的学号/工号">
+        <input formControlName="userAccount" matInput type="text" placeholder="学号/工号">
+        <mat-error [hidden]="!registerFormModel.hasError('length','userAccount')">
+          {{registerFormModel.getError('length','userAccount')?.errInfo}}
+        </mat-error>
       </mat-form-field>
-      <mat-form-field class="full-width">
-        <input matInput type="password" placeholder="请输入您的密码">
+      <div formGroupName="passwordsGroup">
+        <mat-form-field class="full-width">
+          <input formControlName="userPassword" matInput type="password" placeholder="密码">
+          <mat-error [hidden]="!registerFormModel.hasError('length',[userPassword])">
+            密码长度最小6，最大12
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input formControlName="upConfirm" matInput type="password" placeholder="确认密码">
+        </mat-form-field>
+        <mat-error [hidden]="!registerFormModel.hasError('equal','passwordsGroup')">
+          {{registerFormModel.getError('equal','passwordsGroup')?.errInfo}}
+        </mat-error>
+      </div>
+      <mat-form-field>
+        <mat-select placeholder="身份"  formControlName="userRoleId">
+          <mat-option value="1" >教师</mat-option>
+          <mat-option value="2">学生</mat-option>
+        </mat-select>
       </mat-form-field>
+
       <mat-form-field class="full-width">
-        <input matInput type="password" placeholder="请再次输入您的密码">
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input formControlName="userPhone" matInput type="text" placeholder="请输入手机号">
-        <!-- <span [hidden]="">
-            {{registerFormModel.getError('required','userPhone')?.errInfo}}
-            <span [hidden]=""></span>
-            {{registerFormModel.getError('mobile','userPhone')?.errInfo}}
-          </span> -->
-        <mat-error *ngIf="false">
-          <span>{{registerFormModel.getError('required','userPhone')?.errInfo}}</span>
-          {{registerFormModel.getError('mobile','userPhone')?.errInfo}}
-          <span *ngIf="registerFormModel.hasError('requiredSelf','userPhone')">
-            {{registerFormModel.getError('mobile','userPhone')?.errInfo}}
-          </span>
+        <input formControlName="userPhone" matInput type="text" placeholder="手机号">
+        <mat-error [hidden]="(!registerFormModel.hasError('required','userPhone') 
+                              &&!registerFormModel.hasError('mobile','userPhone'))">
+          {{registerFormModel.getError('required','userPhone')?.errInfo || registerFormModel.getError('mobile','userPhone')?.errInfo}}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
-        <input matInput type="text" placeholder="请输入验证码">
-        <button type="button" class="validate-code" mat-button matSuffix mat-raised-button (click)="getValidateCdoe()" [disabled]='isGetCode'>
+        <input formControlName="code" matInput type="text" placeholder="请输入验证码">
+        <button type="button"  class="validate-code" mat-button matSuffix mat-raised-button (click)="getValidateCdoe()" [disabled]='isGetCode'>
           {{valideteCodeInfo.info}}
         </button>
+        <mat-error [hidden]="!registerFormModel.hasError('required','code')">
+          {{registerFormModel.getError('required','code')?.errInfo}}
+        </mat-error>
       </mat-form-field>
-      <button type="button" mat-raised-button>确定</button>
+      <button type="submit" mat-raised-button>完成注册</button>
     </mat-card-content>
     <mat-card-actions class="text-right">
       <p>

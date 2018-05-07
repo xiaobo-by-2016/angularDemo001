@@ -1,17 +1,17 @@
 <mat-nav-list >
-    <mat-list-item (click)="doSelectMenu('/home/topic-select')"> 
+    <mat-list-item *ngIf="userRole == 2"  (click)="doSelectMenu('/home/topic-select')"> 
         <mat-icon mat-list-icon>receipt</mat-icon>
         <h4 mat-line>题目选取</h4>
     </mat-list-item>
-    <mat-list-item (click)="doSelectMenu('/home/progress-manage')">
+    <mat-list-item *ngIf="userRole == 2"  (click)="doSelectMenu('/home/progress-manage')">
         <mat-icon mat-list-icon>timeline</mat-icon>
         <h4 mat-line>进度管理</h4>
     </mat-list-item>
-    <mat-list-item (click)="doSelectMenu('/home/student-progress')">
+    <mat-list-item *ngIf="userRole == 1"  (click)="doSelectMenu('/home/student-progress')">
         <mat-icon mat-list-icon>timeline</mat-icon>
         <h4 mat-line>学生进度</h4>
     </mat-list-item>
-    <mat-list-item (click)="doSelectMenu('/home/topic-manage')">
+    <mat-list-item *ngIf="userRole == 1" (click)="doSelectMenu('/home/topic-manage')">
         <mat-icon mat-list-icon>receipt</mat-icon>
         <h4 mat-line>题目管理</h4>
     </mat-list-item>

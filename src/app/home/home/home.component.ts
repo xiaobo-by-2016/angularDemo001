@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { getLocalStorage } from '../../utils/localStorage';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +10,12 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   private width :number = window.screen.availWidth;
   public navMode :string = 'side';
+  public userInfo;
   constructor(private router:Router) {}
   
   ngOnInit() {
+    this.userInfo = getLocalStorage('userInfo');
+
     this.router.navigate(['/home/topic-manage']);//默认界面
     if(this.width >700 ){
       this.navMode = 'side';

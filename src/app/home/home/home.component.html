@@ -6,7 +6,7 @@
   <main class="fill-remaining-space">
         <mat-sidenav-container class="fill-remaining-space flex-column">
             <mat-sidenav #sidenav [mode]="navMode" >
-                <app-side-menu (selectMenuItem)="toggle(sidenav);showRightCom($event)"></app-side-menu>
+                <app-side-menu [userRole]="userInfo.roleId" (selectMenuItem)="toggle(sidenav);showRightCom($event)"></app-side-menu>
             </mat-sidenav>
             <mat-sidenav-content class="fill-remaining-space0 flex-column">
                     <router-outlet ></router-outlet>
