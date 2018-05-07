@@ -1,40 +1,47 @@
 <form [formGroup]="registerFormModel" (submit)="onSubmit()">
-   
+
   <mat-card>
-     <mat-card-header>
-       <mat-card-title>新用户注册:</mat-card-title>
-     </mat-card-header>
-     <mat-card-content>
-        <mat-input-container class="full-width">
-            <input matInput type="text" placeholder="您的学号/工号" >
-        </mat-input-container>
-        <mat-input-container class="full-width">
-                <input matInput type="password" placeholder="请输入您的密码" >
-        </mat-input-container>
-        <mat-input-container class="full-width">
-          <input matInput type="password" placeholder="请再次输入您的密码" >
-        </mat-input-container>
-        <mat-input-container class="full-width">
-          <input formControlName="userPhone" matInput type="text" placeholder="请输入手机号" >
-          <span [hidden]="!registerFormModel.hasError('mobile','userPhone')">
-            {{registerFormModel.getError('require','userPhone')?.errInfo }}
+    <mat-card-header>
+      <mat-card-title>新用户注册:</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="full-width">
+        <input matInput type="text" placeholder="您的学号/工号">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput type="password" placeholder="请输入您的密码">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput type="password" placeholder="请再次输入您的密码">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input formControlName="userPhone" matInput type="text" placeholder="请输入手机号">
+        <!-- <span [hidden]="">
+            {{registerFormModel.getError('required','userPhone')?.errInfo}}
+            <span [hidden]=""></span>
+            {{registerFormModel.getError('mobile','userPhone')?.errInfo}}
+          </span> -->
+        <mat-error *ngIf="false">
+          <span>{{registerFormModel.getError('required','userPhone')?.errInfo}}</span>
+          {{registerFormModel.getError('mobile','userPhone')?.errInfo}}
+          <span *ngIf="registerFormModel.hasError('requiredSelf','userPhone')">
+            {{registerFormModel.getError('mobile','userPhone')?.errInfo}}
           </span>
-        </mat-input-container>
-        <mat-input-container class="full-width">
-          <input matInput type="text" placeholder="请输入验证码" >
-          <button type="button" 
-                  class="validate-code" 
-                  mat-button  
-                  matSuffix 
-                  mat-raised-button (click)="getValidateCdoe()"
-                  [disabled]='isGetCode'>
-              {{valideteCodeInfo.info}}
-          </button>
-        </mat-input-container>
-        <button type="button" mat-raised-button>确定</button>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput type="text" placeholder="请输入验证码">
+        <button type="button" class="validate-code" mat-button matSuffix mat-raised-button (click)="getValidateCdoe()" [disabled]='isGetCode'>
+          {{valideteCodeInfo.info}}
+        </button>
+      </mat-form-field>
+      <button type="button" mat-raised-button>确定</button>
     </mat-card-content>
     <mat-card-actions class="text-right">
-        <p><a routerLink="/login">返回</a></p>
+      <p>
+        <a routerLink="/login">返回</a>
+      </p>
     </mat-card-actions>
   </mat-card>
 

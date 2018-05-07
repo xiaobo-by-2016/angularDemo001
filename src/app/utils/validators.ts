@@ -10,13 +10,14 @@ export function mobileValidator(): ValidatorFn {
     return (control: AbstractControl): {[key: string]: any} => {
         var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
         let valid = myreg.test(control.value);
+        console.log('buhe')
         return valid ? null : { mobile: {errInfo:'手机号不合法~'} };
     };
 }
-export function required(info: string): ValidatorFn {
+export function requiredSelf(info: string): ValidatorFn {
     return (control: AbstractControl): {[key: string]: any} => {
         let valid = control.value.trim()===''?false:true;
-        return valid ? null : { mobile: {errInfo:info+'为必填项'} };
+        return valid ? null : { required: {errInfo:info+'不能为空'} };
     };
 }
 

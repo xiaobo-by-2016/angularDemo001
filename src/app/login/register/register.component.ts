@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from '../../utils/http.service';
-import { mobileValidator, required } from '../../utils/validators';
+import { mobileValidator, requiredSelf } from '../../utils/validators';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
     fb: FormBuilder) {
 
     this.registerFormModel = fb.group({
-      userPhone: ['',[required('手机号')]]
+      userPhone: ['',[requiredSelf('手机号'),mobileValidator()]]
     })
 
   }

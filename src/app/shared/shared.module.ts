@@ -11,7 +11,8 @@ import {  MatCardModule,
           MatRadioModule,
           MatSelectModule,
           MatExpansionModule,
-          MatTableModule,} from '@angular/material';
+          MatTableModule,
+          MatFormFieldModule} from '@angular/material';
 import { FormsModule,  ReactiveFormsModule }   from '@angular/forms';
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { FormsModule,  ReactiveFormsModule }   from '@angular/forms';
     MatExpansionModule,
     MatTableModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule
   ],
   declarations: [],
   exports:[
@@ -48,7 +50,8 @@ import { FormsModule,  ReactiveFormsModule }   from '@angular/forms';
     MatExpansionModule,
     MatTableModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule
   ]
 })
 export class SharedModule { }
