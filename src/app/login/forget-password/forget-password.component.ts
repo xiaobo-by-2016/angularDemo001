@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from '../../utils/http.service';
-import { 
-  mobileValidator, 
-  requiredSelf, 
-  lengthValidator, 
-  equalValidator } from '../../utils/validators';
+import {
+  mobileValidator,
+  requiredSelf,
+  lengthValidator,
+  equalValidator
+} from '../../utils/validators';
 @Component({
   selector: 'app-forget-password',
   templateUrl: './forget-password.component.html',
@@ -44,7 +45,7 @@ export class ForgetPasswordComponent implements OnInit {
    * 验证码获取
    */
   getValidateCdoe() {
-    
+
     if (this.fpFormModel.get('userPhone').valid) {
       if (this.valideteCodeInfo.status) {
         this.timeHandler(60);
@@ -61,7 +62,7 @@ export class ForgetPasswordComponent implements OnInit {
             console.log(res.message);
           }
         })
-    }else{
+    } else {
       alert('手机号不能为空')
     }
 
@@ -102,8 +103,8 @@ export class ForgetPasswordComponent implements OnInit {
           code: this.fpFormModel.value.code
         }, 'findPassword').subscribe(res => {
           if (res.success) {
-              console.log(res);
-              this.router.navigate(['/login']);
+            console.log(res);
+            this.router.navigate(['/login']);
           } else {
             console.log(res.message);
           }

@@ -78,8 +78,24 @@ html , body , app-root{
 .color2{
     color: #9c9faf;
 }
+.error{
+    color: #EE0000;
+}
 
+// 提示框
+.toast-success-container{
+    background-color: #32CD32;
+    text-align: center;
+}
+.toast-error-container{
+    background-color: #EE0000;
+    text-align: center;
+}
 
+.toast-warn-container{
+    background-color: #EEC900;
+    text-align: center;
+}
 
 
 
@@ -92,7 +108,7 @@ $color-loader: #b0b3c7;
     height: 100%;
     width: 100%;
     z-index: 999;
-    background-color:rgba(0,0,0,0.5)
+    background-color:rgba(0,0,0,0.05)
 }
 .loader {
   width: 250px;
@@ -116,7 +132,7 @@ $color-loader: #b0b3c7;
     height: 15px;
     background: $color-loader;
     position: absolute;
-    animation: load .7s infinite alternate ease-in-out;
+    animation: load .8s infinite alternate ease-in-out;
   }
   
   &::before {

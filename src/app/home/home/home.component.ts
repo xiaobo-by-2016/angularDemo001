@@ -11,12 +11,22 @@ export class HomeComponent implements OnInit {
   private width :number = window.screen.availWidth;
   public navMode :string = 'side';
   public userInfo;
+  public currentPage: string;
   constructor(private router:Router) {}
   
   ngOnInit() {
     this.userInfo = getLocalStorage('userInfo');
-
-    this.router.navigate(['/home/topic-manage']);//默认界面
+    
+    if(this.userInfo.roleId == 1){
+      //教师
+      this.router.navigate(['/home/topic-manage']);//默认界面
+      this.currentPage = '题目管理';
+    }else{
+      //学生
+      this.router.navigate(['/home/progress-manage']);//默认界面
+      this.currentPage = '进度管理';
+    }
+    
     if(this.width >700 ){
       this.navMode = 'side';
     }else{
@@ -24,9 +34,9 @@ export class HomeComponent implements OnInit {
     }
     console.log(this.navMode)
   }
-  showRightCom(p){
-    console.log(p)
-    this.router.navigate([p]);
+  showRightCom(urlObj){
+    this.currentPage = urlObj.title;
+    this.router.navigate([urlObj.url]);
   }
   toggle(sideObj){
     if(this.width <700 ){

@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { HttpService } from './utils/http.service';
+import { ToastComponentsModule } from './utils/toast-components/toast-components.module';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { HttpService } from './utils/http.service';
     AppRoutingModule,
     LoginModule,
     CoreModule,
-    HomeModule
+    HomeModule,
+    ToastComponentsModule
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

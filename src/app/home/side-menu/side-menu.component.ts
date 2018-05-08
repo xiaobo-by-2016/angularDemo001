@@ -15,7 +15,7 @@ export class SideMenuComponent implements OnInit {
   ngOnInit() {
     
   }
-  doSelectMenu(p:string ){
+  doSelectMenu(p:any ){
     this.selectMenuItem.emit(p);
   }
 

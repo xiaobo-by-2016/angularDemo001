@@ -1,25 +1,39 @@
 <div class="setting ">
-    <div class="box-info">
-            <mat-tab-group>
-                    <mat-tab label="设置">
-                            <div class="box-input">
-                                    <label>旧密码</label>
-                                    <input type="password" placeholder="请输入您的旧密码">
-                            </div>
-                            <div class="box-input">
-                                <label>新密码</label>
-                                <input type="password" placeholder="请输入您的姓名">
-                            </div>
-                            <div class="box-input">
-                                <label>确认密码</label>
-                                <input type="password" placeholder="请输入您的新密码">
-                            </div>
-                    </mat-tab>
-                   
+        <form class="box-info" [formGroup]="settingModel" (submit)="onSubmit()">
+                <mat-tab-group>
+                        <mat-tab label="设置">
+                                <div class="box-input">
+                                        <label>旧密码</label>
+                                        <input formControlName="oldPassword" type="password" placeholder="请输入您的旧密码">
+                                        <div *ngIf="
+                                        settingModel.hasError('length','oldPassword') &&
+                                        settingModel.get('oldPassword').touched" class="error">
+                                                *
+                                        </div>
+                                </div>
+                                <div formGroupName="passwordsGroup">
+                                        <div class="box-input">
+                                                <label>新密码</label>
+                                                <input formControlName="newPassword1" type="password" placeholder="请输入您的新密码">
+                                                <div class="error" *ngIf="settingModel.hasError('length',['passwordsGroup','newPassword1'])
+                                                                        && settingModel.get(['passwordsGroup','newPassword1']).touched">
+                                                        *
+                                                </div>
+                                        </div>
 
-            </mat-tab-group>
-            <div class="border-bottom text-right">
-                    <button mat-button>确认修改</button>
-            </div>
-    </div>
+                                        <div class="box-input">
+                                                <label>确认密码</label>
+                                                <input formControlName="newPassword2" type="password" placeholder="请确认您的新密码">
+                                        </div>
+                                        <div *ngIf="settingModel.hasError('equal','passwordsGroup')" class="error" style="text-align:center">
+                                                <label></label>
+                                                新密码与确认密码不同
+                                        </div>
+                                </div>
+                        </mat-tab>
+                </mat-tab-group>
+                <div class="border-bottom text-right">
+                        <button mat-button type="submit">确认修改</button>
+                </div>
+        </form>
 </div>

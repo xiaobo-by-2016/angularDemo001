@@ -20,26 +20,35 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private httpService: HttpService,
     fb: FormBuilder,
-    private commonService:CommonService) {
+    private commonService: CommonService) {
 
     this.loginFormModel = fb.group({
       userAccount: [''],
       userPassword: ['']
     })
   }
-  ngOnInit() {}
+  ngOnInit() {
+   
+  }
   onSubmit() {
-    this.commonService.showLoading()
-    this.httpService.doPost(this.loginFormModel.value,'login').subscribe(res => {
-        if(res.success){
-          setLocalStorage('userInfo',res.userInfo[0])
-          setTimeout(() =>{
-            this.commonService.hideLoding()
-            this.router.navigate(['/home']);
-          },1000)
-        }else{
-          console.log(res.message);
-        }
+    
+    this.commonService.showLoading('正在登陆...')
+    this.httpService.doPost(this.loginFormModel.value, 'login').subscribe(res => {
+      console.log(res)
+      if (res.success) {
+        setLocalStorage('userInfo', res.userInfo[0])
+        setTimeout(() => {
+          this.commonService.hideLoding();
+          this.commonService.toastSuccess(res.message,2000,'top','center')
+          this.router.navigate(['/home']);
+        }, 1000)
+      } else {
+        setTimeout(() => {
+          this.commonService.hideLoding()
+          this.commonService.toastError(res.message,2000,'top','center')
+        }, 1000)
+
+      }
     })
   }
 }
