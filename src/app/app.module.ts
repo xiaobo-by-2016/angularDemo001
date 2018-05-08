@@ -1,3 +1,4 @@
+import { CommonService } from './utils/common.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -32,7 +33,8 @@ import { HttpService } from './utils/http.service';
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
-    HttpService
+    HttpService,
+    CommonService
   ],
   bootstrap: [AppComponent]
 })
