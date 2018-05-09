@@ -22,6 +22,15 @@ export function mobileValidator(): ValidatorFn {
         return valid ? null : { mobile: { errInfo: '手机号不合法~' } };
     };
 }
+export function emailValidator(): ValidatorFn {
+    return (control:  AbstractControl): {[key:string]: any} => {
+        var myreg = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
+        let valid = myreg.test(control.value);
+        return valid ? null : {email: { errInfo: '邮箱格式不正确~'}}
+    }
+}
+
+
 //字段长度验证
 export function lengthValidator(info: string, min: number, max: number): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } => {

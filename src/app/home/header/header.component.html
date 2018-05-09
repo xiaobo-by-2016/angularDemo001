@@ -1,12 +1,24 @@
 <mat-toolbar>
       <mat-toolbar-row>
-        <button [disabled]="isDisabled" mat-icon-button (click)="openSidenMenu()">
-              <mat-icon class="color1">menu</mat-icon>
-        </button>
-        <span>毕业设计进度管理系统</span>
-        <span class="color2 current-page">
-              <span>当前页面:</span>
-              <span>{{currentPage}}</span>
+            <button [disabled]="isDisabled" mat-icon-button (click)="openSidenMenu()">
+                  <mat-icon class="color1">menu</mat-icon>
+            </button>
+            <span>毕业设计进度管理系统</span>
+            <span class="color2 current-page">
+                  <span>当前页面:</span>
+                  <span>{{currentPage}}</span>
             </span>
+            <span class="fill-remaining-space">
+                  
+            </span>
+            <span class="color2 user-info">
+                  <span>用户:</span>
+                  <span>{{userInfo.userName || userInfo.userAccount || userInfo.userPhone}}</span>
+                  
+            </span>
+            <button class="logout" mat-button  (click)="doLogout()">
+                  <mat-icon class="color1">settings_power</mat-icon>
+                  <span>注销</span>
+            </button>
       </mat-toolbar-row>
 </mat-toolbar>

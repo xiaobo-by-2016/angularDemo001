@@ -11,3 +11,19 @@
         border-bottom: 1px solid cadetblue;
     }
 }
+.user-info{
+    margin-right: 50px;
+    font-size: 15px;
+    
+    >span:first-child{
+        font-size: 14px;
+    }
+    >span:last-child{
+        font-size: 14px;
+        margin-left: 10px;
+        // border-bottom: 1px solid cadetblue;
+    }
+}
+.logout{
+    // margin-right: 10px;
+}
