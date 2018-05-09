@@ -58,9 +58,9 @@ export class AccountInfoComponent implements OnInit {
   showUserInfo(){
     this.userInfo = getLocalStorage('userInfo');
     this.accountInfoModel = this.fb.group({
-      userName: [this.userInfo.userName],
+      userName: [this.userInfo.userName,[requiredSelf('用户姓名不能为空~')]],
       email: [this.userInfo.email,[emailValidator()]],
-      collegeId: [this.userInfo.collegeI],
+      collegeId: [this.userInfo.collegeI,[requiredSelf('高校信息不能为空~')]],
       userAccount: [this.userInfo.userAccount],
       userPhone: [this.userInfo.userPhone],
       sex: [this.userInfo.sex || '1']
