@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from '../../utils/http.service';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { setLocalStorage } from '../../utils/localStorage';
+import { setLocalStorage, getLocalStorage } from '../../utils/localStorage';
 import { timeout } from 'q';
 
 @Component({
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     })
   }
   ngOnInit() {
-   
+   console.log(getLocalStorage('userInfo'))
   }
   onSubmit() {
     
@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
       console.log(res)
       if (res.success) {
         setLocalStorage('userInfo', res.userInfo[0])
+        setLocalStorage('loginStatus','login');
         setTimeout(() => {
           this.commonService.hideLoding();
           this.commonService.toastSuccess(res.message,2000,'top','center')

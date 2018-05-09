@@ -13,7 +13,8 @@ import {  MatCardModule,
           MatExpansionModule,
           MatTableModule,
           MatFormFieldModule,
-          MatSnackBarModule} from '@angular/material';
+          MatSnackBarModule,
+          MatDialogModule} from '@angular/material';
 import { FormsModule,  ReactiveFormsModule }   from '@angular/forms';
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { FormsModule,  ReactiveFormsModule }   from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   declarations: [],
   exports:[
@@ -54,7 +56,8 @@ import { FormsModule,  ReactiveFormsModule }   from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ]
 })
 export class SharedModule { }

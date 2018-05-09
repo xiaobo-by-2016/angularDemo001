@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { HttpService } from '../../utils/http.service';
 import { equalValidator, requiredSelf, lengthValidator, emailValidator } from '../../utils/validators';
 import { CommonService } from '../../utils/common.service';
-import { getLocalStorage } from '../../utils/localStorage';
+import { getLocalStorage, setLocalStorage } from '../../utils/localStorage';
 @Component({
   selector: 'app-account-info',
   templateUrl: './account-info.component.html',
@@ -55,20 +55,36 @@ export class AccountInfoComponent implements OnInit {
   /** 
    * 界面信息返现
   */
-  showUserInfo(){
+  showUserInfo() {
     this.userInfo = getLocalStorage('userInfo');
     this.accountInfoModel = this.fb.group({
-      userName: [this.userInfo.userName,[requiredSelf('用户姓名不能为空~')]],
-      email: [this.userInfo.email,[emailValidator()]],
-      collegeId: [this.userInfo.collegeI,[requiredSelf('高校信息不能为空~')]],
+      userName: [this.userInfo.userName || '', [requiredSelf('用户姓名不能为空~')]],
+      email: [this.userInfo.email || '', [emailValidator()]],
+      collegeId: [this.userInfo.collegeId || '', [requiredSelf('高校信息不能为空~')]],
       userAccount: [this.userInfo.userAccount],
       userPhone: [this.userInfo.userPhone],
-      sex: [this.userInfo.sex || '1']
+      sex: [this.userInfo.sex+'' || '1']
     })
   }
 
   onSubmit() {
-    console.log(this.accountInfoModel.value)
+    if (this.accountInfoModel.valid) {
+
+      this.commonService.showLoading('正在更新用户信息...');
+      this.httpService.doPost(
+        this.accountInfoModel.value, 'updateUserInfo').subscribe(res => {
+          this.commonService.hideLoding();
+          if (res.success) {
+            this.commonService.toastSuccess('信息更新成功~');
+            setLocalStorage('userInfo',res.userInfo[0])
+            this.router.navigate(['/home/account-info1']);
+          } else {
+            this.commonService.toastSuccess(res.message)
+          }
+        })
+    } else {
+      this.commonService.toastWarn('信息有误,请修正后再进行提交~');
+    }
   }
 
 }

@@ -5,6 +5,11 @@
                                 <div class="box-input">
                                         <label>姓名</label>
                                         <input formControlName="userName" placeholder="请输入您的姓名">
+                                        <div *ngIf="
+                                        accountInfoModel.hasError('required','userName') &&
+                                        accountInfoModel.get('userName').touched" class="error">
+                                                *
+                                        </div>
                                 </div>
                                 <div class="box-input">
                                         <label>性别</label>
@@ -26,12 +31,20 @@
                                 <div class="box-input">
                                         <label>高校名称</label>
                                         <mat-form-field class="fill-remaining-space margin-left-16 padding-lfet-15">
-                                                <mat-select formControlName="collegeId">                                                                
+                                                <mat-select formControlName="collegeId">
+                                                        <mat-option value=""> 
+                                                                ---请选择高校---
+                                                        </mat-option>                                                                
                                                         <mat-option *ngFor="let item of schoolList" [value]="item.collegeId">
                                                                 {{item.collegeName}}
                                                         </mat-option>
                                                 </mat-select>
                                         </mat-form-field>
+                                        <div *ngIf="
+                                        accountInfoModel.hasError('required','collegeId') &&
+                                        accountInfoModel.get('collegeId').touched" class="error">
+                                                *
+                                        </div>
                                 </div>
                         </mat-tab>
                         <mat-tab label="联系方式">

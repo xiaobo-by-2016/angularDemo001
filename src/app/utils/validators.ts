@@ -10,7 +10,9 @@ import {
 //必输验证
 export function requiredSelf(info: string): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } => {
-        let valid = control.value.trim() === '' ? false : true;
+        let value = control.value+'';
+
+        let valid = value.trim() === '' ? false : true;
         return valid ? null : { required: { errInfo: info} };
     };
 }
@@ -22,6 +24,7 @@ export function mobileValidator(): ValidatorFn {
         return valid ? null : { mobile: { errInfo: '手机号不合法~' } };
     };
 }
+//邮箱格式验证
 export function emailValidator(): ValidatorFn {
     return (control:  AbstractControl): {[key:string]: any} => {
         var myreg = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;

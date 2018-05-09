@@ -11,6 +11,8 @@ import { TopicManageComponent } from './topic-manage/topic-manage.component';
 import { TopicSelectComponent } from './topic-select/topic-select.component';
 import { StudentProgressComponent } from './student-progress/student-progress.component';
 import { ProgressManageComponent } from './progress-manage/progress-manage.component';
+import { AddTopicComponent } from './add-topic/add-topic.component';
+import { AddProgressComponent } from './add-progress/add-progress.component';
 
 @NgModule({
   imports: [
@@ -19,11 +21,23 @@ import { ProgressManageComponent } from './progress-manage/progress-manage.compo
     SharedModule
   ],
   declarations: [
-    HomeComponent, 
-    HeaderComponent, 
-    SideMenuComponent, 
-    AccountInfoComponent, SettingComponent, TopicManageComponent, TopicSelectComponent, StudentProgressComponent, ProgressManageComponent]
+    HomeComponent,
+    HeaderComponent,
+    SideMenuComponent,
+    AccountInfoComponent,
+    SettingComponent,
+    TopicManageComponent,
+    TopicSelectComponent,
+    StudentProgressComponent,
+    ProgressManageComponent,
+    AddTopicComponent,
+    AddProgressComponent
+  ],
+  entryComponents: [
+    AddTopicComponent,
+    AddProgressComponent
+  ]
 })
-export class HomeModule { 
-    
+export class HomeModule {
+
 }

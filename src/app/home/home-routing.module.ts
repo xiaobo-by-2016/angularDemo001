@@ -12,6 +12,7 @@ import { ProgressManageComponent } from './progress-manage/progress-manage.compo
 const routes: Routes = [
     { path: 'home', component: HomeComponent ,children:[
         {path:'account-info',component:AccountInfoComponent},
+        {path:'account-info1',component:AccountInfoComponent},
         {path:'setting',component:SettingComponent},
         {path:'topic-select',component:TopicSelectComponent},
         {path:'topic-manage',component:TopicManageComponent},
