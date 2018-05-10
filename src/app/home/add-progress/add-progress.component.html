@@ -1,3 +1,39 @@
-<p>
-  add-progress works!
-</p>
+<form [formGroup]="addProgressModel" (submit)="onSubmit()">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>进度录入:</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field class="full-width">
+                <input type="date" formControlName="progressTime" matInput placeholder="时间">
+                <mat-error *ngIf="addProgressModel.hasError('required','progressTime') &&
+                addProgressModel.get('progressTime').touched ">
+                    {{addProgressModel.getError('required','progressTime')?.errInfo}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input type="number"  min="1" max="100" formControlName="progress" matInput placeholder="当前进度">
+                <mat-error *ngIf="addProgressModel.hasError('rangeNumber','progress') &&
+                addProgressModel.get('progress').touched ">
+                    {{addProgressModel.getError('rangeNumber','progress')?.errInfo}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width ">
+                <textarea formControlName="progressContent" class="progress-content" matInput placeholder="进度详情 "></textarea>
+                <mat-error *ngIf="addProgressModel.hasError('required','progressContent') &&
+                addProgressModel.get('progressContent').touched ">
+                    {{addProgressModel.getError('required','progressContent')?.errInfo}}
+                </mat-error>
+            </mat-form-field>
+
+            <div class="text-center ">
+                <button type="button " mat-raised-button (click)="cancel()">取消</button>
+                <button type="submit " mat-raised-button>提交</button>
+            </div>
+        </mat-card-content>
+        <!-- <mat-card-actions class="text-right ">
+                   <p>还没注册？<a  routerLink="/register ">注册</a></p>
+                   <p>忘记密码？<a routerLink="/forget-password ">找回</a></p>
+               </mat-card-actions> -->
+    </mat-card>
+</form>

@@ -1,13 +1,16 @@
 <div class="topic-manage">
     <div class="box1 ">
-        <input type="search" placeholder="请输入关键字">
-        <button mat-raised-button>
+        <input type="search"  [(ngModel)]="keyStr" placeholder="请输入关键字">
+        <button mat-raised-button type="button" (click)="searchByKey()">
             查询
         </button>
 
     </div>
-    <div class="box">
-
+    <div class="box scrollbar">
+      
+        <div class="not-topic" *ngIf="topicList.length == 0">
+            暂无毕业设计题目信息~
+        </div>
         <div class="topic-list " *ngFor="let topicItem of topicList">
             <mat-accordion>
                 <mat-expansion-panel>
@@ -16,22 +19,22 @@
                                 {{topicItem.topicTitle}}
                         </mat-panel-title>
                         <mat-panel-description>
-                            <span [class.]>
-
+                            <span [ngClass]="{'color3':topicItem.studentName,'color4':!topicItem.studentName}">
+                                {{topicItem.studentName || '----'}}
                             </span>
-                                {{topicItem.studentName || 'fff'}}
+                                
                         </mat-panel-description>
                     </mat-expansion-panel-header>
 
                     <div>{{topicItem.topicContent}}</div>
                     <div class="text-right">
-                        <button mat-button type="button">
-                            <mat-icon>delete</mat-icon>
-                            <span>删除</span>
+                        <button mat-button type="button" (click)="deleteTopic(topicItem.topicId)">
+                            <mat-icon class="color2">delete</mat-icon>
+                            <span class="color2">删除</span>
                         </button>
                         <button mat-button type="button">
-                            <mat-icon>settings_backup_restore</mat-icon>
-                            <span>重置</span>
+                            <mat-icon class="color1">settings_backup_restore</mat-icon>
+                            <span class="color1">重置</span>
                         </button>
                     </div>
                 </mat-expansion-panel>

@@ -46,6 +46,24 @@ export function lengthValidator(info: string, min: number, max: number): Validat
         return valid ? null : {  length: { errInfo: info} };
     };
 }
+//范围取值
+export function rangeNumberValidator(info: string, min: number, max: number): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } => {
+        let valid;
+        if(control.value == ''){
+            valid=false;
+        }else{
+            if (control.value >= min && control.value <= max) {
+                valid = true;
+            } else {
+                valid = false;
+            }
+        }
+        
+
+        return valid ? null : {  rangeNumber: { errInfo: info} };
+    };
+}
 
 
 //两个字段相等验证

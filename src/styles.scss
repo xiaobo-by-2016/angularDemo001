@@ -85,10 +85,14 @@ html , body , app-root{
     color: #32CD32;
 }
 .color4{
-    color: #32CD32;
+    color: #EE0000;
 }
 .error{
     color: #EE0000;
+}
+
+.margin-l-10{
+    margin-left: 10px !important;
 }
 
 // 提示框
@@ -111,6 +115,10 @@ html , body , app-root{
     padding: 0px !important;
 }
 .add-topic-panel{
+    width:100%;
+    max-width:500px !important;
+}
+.add-progress-panel{
     width:100%;
     max-width:500px !important;
 }
@@ -166,4 +174,27 @@ $color-loader: #b0b3c7;
   0% { left: 0; height: 30px; width: 15px }
   50% { height: 8px; width: 40px }
   100% { left: 235px; height: 30px; width: 15px}
+}
+
+
+
+/*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+.scrollbar::-webkit-scrollbar{
+    width: 5px;
+    height: 16px;
+    background-color: white;
+}
+/*定义滚动条的轨道，内阴影及圆角*/
+.scrollbar::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px #f5f5f5;
+    border-radius: 10px;
+    background-color: white;
+}
+/*定义滑块，内阴影及圆角*/
+.scrollbar::-webkit-scrollbar-thumb{
+    /*width: 10px;*/
+    height: 20px;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color:white;
 }

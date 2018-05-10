@@ -12,9 +12,10 @@ import { getLocalStorage } from '../../utils/localStorage';
 export class TopicManageComponent implements OnInit {
 
   public userInfo;
+  public keyStr:string ='';
   private topicTitle: string = '';
   private topicContent: string = '';
-  public topicList;
+  public topicList = [];
   constructor(
     private dialog: MatDialog,
     private commonService: CommonService,
@@ -73,6 +74,42 @@ export class TopicManageComponent implements OnInit {
         } else {
           console.log(res.message)
           this.commonService.toastSuccess(res.message)
+        }
+      })
+  }
+
+  deleteTopic(topicId){
+    this.commonService.showLoading('正在删除...');
+    this.httpService.doPost(
+      {
+        teacherAccount: this.userInfo.userAccount,
+        topicId:topicId
+      }, 'deleteTopic').subscribe(res => {
+        this.commonService.hideLoding();
+        if (res.success) {
+          this.topicList = res.topicList;
+          this.commonService.toastSuccess('删除成功');
+        } else {
+          this.commonService.toastSuccess(res.message)
+        }
+      })
+  }
+
+  searchByKey(){
+    console.log(this.keyStr)
+    this.commonService.showLoading('正在查询...');
+    this.httpService.doPost(
+      {
+        teacherAccount: this.userInfo.userAccount,
+        strkey:this.keyStr
+      }, 'getTopicsByKey').subscribe(res => {
+        this.commonService.hideLoding();
+        if (res.success) {
+          
+          this.topicList = res.topicList;
+          console.log( this.topicList)
+        } else {
+          this.commonService.toastSuccess(res.message,2000000)
         }
       })
   }
