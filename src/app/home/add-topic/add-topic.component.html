@@ -1,1 +1,33 @@
-的撒发射点
+<form [formGroup]="addTopicModel" (submit)="onSubmit()">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>题目录入:</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field class="full-width">
+                <input formControlName="topicTitle" matInput placeholder="题目">
+                <mat-error *ngIf="addTopicModel.hasError('required','topicTitle') &&
+                addTopicModel.get('topicTitle').touched ">
+                    {{addTopicModel.getError('required','topicTitle')?.errInfo}}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width ">
+                <textarea formControlName="topicContent" class="topic-content " matInput placeholder="详情 "></textarea>
+                <mat-error *ngIf="addTopicModel.hasError('required','topicContent') &&
+                addTopicModel.get('topicContent').touched ">
+                    {{addTopicModel.getError('required','topicContent')?.errInfo}}
+                </mat-error>
+            </mat-form-field>
+
+            <div class="text-center ">
+                <button type="button " mat-raised-button (click)="cancel()">取消</button>
+                <button type="submit " mat-raised-button>提交</button>
+            </div>
+        </mat-card-content>
+        <!-- <mat-card-actions class="text-right ">
+                   <p>还没注册？<a  routerLink="/register ">注册</a></p>
+                   <p>忘记密码？<a routerLink="/forget-password ">找回</a></p>
+               </mat-card-actions> -->
+    </mat-card>
+</form>
