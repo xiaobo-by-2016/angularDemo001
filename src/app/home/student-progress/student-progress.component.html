@@ -1,26 +1,34 @@
 <div class="student-progress">
     <div class="box1 ">
-        <input type="search" placeholder="请输入关键字" >
-        <button mat-raised-button>
+        <input type="search"  [(ngModel)]="keyStr" placeholder="请输入关键字">
+        <button mat-raised-button type="button" (click)="searchByKey()">
             查询
         </button>
        
     </div>
-  <div class="box">
-   
-      <div class="topic-list ">
+  <div class="box scrollbar">
+    <div class="not-topic" *ngIf="topicList.length == 0">
+        暂无毕业设计题目信息~
+    </div>
+      <div class="topic-list "  *ngFor="let topicItem of topicList">
           <mat-accordion>
-              <mat-expansion-panel (opened)="open()">
+              <mat-expansion-panel >
                 <mat-expansion-panel-header>
                   <mat-panel-title>
-                      毕业设计管理系统
+                    {{topicItem.topicTitle}}
                   </mat-panel-title>
                   <mat-panel-description>
-                     路哲媛
+                    <span [ngClass]="{'color3':topicItem.studentName,'color4':!topicItem.studentName}">
+                        {{topicItem.studentName || '----'}}
+                    </span>
                   </mat-panel-description>
                 </mat-expansion-panel-header>
           
-                <div>进度信息，按时间显示</div>
+                <div class="pro-list" *ngFor="let proItem of topicItem.proList">
+                    <div>{{proItem.pro}}%</div>
+                    <div>{{proItem.proContent}}</div>
+                    <div>{{proItem.proTime | date:'short'}}</div>
+                </div>
                <div class="text-right">
                 
                   <button mat-button type="button">
@@ -31,28 +39,7 @@
               </mat-expansion-panel>
             </mat-accordion>
       </div>
-      <div class="topic-list ">
-          <mat-accordion>
-              <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                      二维码考勤管理系统
-                  </mat-panel-title>
-                  <mat-panel-description>
-                     肖波
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <div>进度信息，按时间显示</div>
-               <div class="text-right">
-                 
-                  <button mat-button type="button">
-                      <mat-icon>message</mat-icon>
-                      <span>短信催促</span>
-                  </button>
-               </div>
-              </mat-expansion-panel>
-            </mat-accordion>
-      </div>
+      
   </div>
   
 </div>
