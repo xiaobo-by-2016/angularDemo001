@@ -10,6 +10,7 @@ import { CommonService } from '../../utils/common.service';
 })
 export class AddProgressComponent implements OnInit {
   addProgressModel:FormGroup;
+  private proTime:Date;
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<AddProgressComponent>,
@@ -18,8 +19,9 @@ export class AddProgressComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.proTime = new Date();
     this.addProgressModel = this.fb.group({
-      progressTime: ['',[requiredSelf('时间不合法~')]],
+      progressTime: [`${this.proTime.getFullYear()}/${this.proTime.getMonth()}/${this.proTime.getDate()}  ${this.proTime.getHours()}:${this.proTime.getMinutes()}:${this.proTime.getSeconds()}`,[requiredSelf('时间不合法~')]],
       progress: ['',[rangeNumberValidator('数值范围1-100',1,100)]],
       progressContent: ['',[requiredSelf('进度详情不能为空~')]]
       
@@ -27,7 +29,16 @@ export class AddProgressComponent implements OnInit {
   }
 
   onSubmit(){
-      
+    if(this.addProgressModel.valid){
+      let result = this.addProgressModel.value;
+      result.progressTime = this.proTime.getTime();
+      this.dialogRef.close(result);
+    }else{
+      this.commonService.toastWarn('录入信息不完整~');
+    }
+  }
+  cancel(){
+    this.dialogRef.close(null);
   }
 
 }

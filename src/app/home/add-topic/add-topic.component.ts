@@ -28,7 +28,6 @@ export class AddTopicComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.addTopicModel.valid)
     if(this.addTopicModel.valid){
       this.dialogRef.close(this.addTopicModel.value);
     }else{

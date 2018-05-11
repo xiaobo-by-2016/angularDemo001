@@ -11,6 +11,7 @@ import { AddProgressComponent } from '../add-progress/add-progress.component';
 })
 export class ProgressManageComponent implements OnInit {
   public userInfo;
+  public proList = [];
   constructor(
     private dialog: MatDialog,
     private commonService: CommonService,
@@ -19,6 +20,7 @@ export class ProgressManageComponent implements OnInit {
 
   ngOnInit() {
     this.userInfo = getLocalStorage('userInfo');
+    this.getProList();
   }
 
   openAddProgress() {
@@ -27,8 +29,68 @@ export class ProgressManageComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-         console.log(result)
+        this.addProgress(result)
       }
     });
+  }
+  addProgress(progressInfo) {
+    this.commonService.showLoading('正在提交...');
+    this.httpService.doPost(
+      {
+        progress: progressInfo.progress,
+        progressContent: progressInfo.progressContent,
+        progressTime: progressInfo.progressTime,
+        userAccount: this.userInfo.userAccount,
+        progressTopicId: this.userInfo.topicId
+      }, 'addProgress').subscribe(res => {
+        setTimeout(() => {
+          this.commonService.hideLoding();
+          if (res.success) {
+            this.commonService.toastSuccess('新增成功~');
+            this.proList = res.proList;
+          } else {
+            this.commonService.toastSuccess(res.message,100000)
+          }
+        }, 1000)
+      })
+  }
+
+
+  getProList() {
+    this.commonService.showLoading('正在获取...');
+    this.httpService.doPost(
+      {
+        userAccount: this.userInfo.userAccount,
+
+      }, 'getProList').subscribe(res => {
+        setTimeout(() => {
+          this.commonService.hideLoding();
+          if (res.success) {
+            this.proList = res.proList;
+            console.log(this.proList)
+          } else {
+            this.commonService.toastSuccess(res.message, 2000)
+          }
+        }, 1000)
+      })
+  }
+
+
+  deletePro(proId){
+    this.commonService.showLoading('正在执行删除...');
+    this.httpService.doPost(
+      {
+        userAccount: this.userInfo.userAccount,
+        proId:proId
+      }, 'deletePro').subscribe(res => {
+        setTimeout(() => {
+          this.commonService.hideLoding();
+          if (res.success) {
+            this.proList = res.proList;
+          } else {
+            this.commonService.toastSuccess(res.message, 2000)
+          }
+        }, 1000)
+      })
   }
 }

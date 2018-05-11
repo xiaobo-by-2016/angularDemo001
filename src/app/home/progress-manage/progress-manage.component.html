@@ -1,59 +1,39 @@
 <div class="progress-manage">
     <div class="box1 ">
-        xxx毕业设计---进度列表
-       
+    毕业设计《{{userInfo.topicTitle}}》---进度列表
+
     </div>
-  <div class="box">
-   
-      <div class="topic-list ">
-          <mat-accordion>
-              <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                     进度：25%
-                  </mat-panel-title>
-                  <mat-panel-description>
-                      2016/04/23
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-          
-               <div>教师录入和查看学生毕业设计进度，学生实时更新进度</div>
-               <div class="text-right">
-                  <button mat-button type="button">
-                      <mat-icon>delete</mat-icon>
-                      <span>删除</span>
-                  </button>
+    <div class="box scrollbar">
+        <div class="not-pro" *ngIf="proList.length == 0">
+            暂无毕业设计进度信息~
+        </div>
+        <div class="pro-list " *ngFor="let proItem of proList" >
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            进度：{{proItem.pro}}%
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{proItem.proTime |date:'short'  }}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <div>{{proItem.proContent}}</div>
+                    <div class="text-right">
+                        <button mat-button type="button" class="color2" (click)="deletePro(proItem.proId)">
+                            <mat-icon>delete</mat-icon>
+                            <span>删除</span>
+                        </button>
+
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
         
-               </div>
-              </mat-expansion-panel>
-            </mat-accordion>
-      </div>
-      <div class="topic-list ">
-          <mat-accordion>
-              <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                      进度：20%
-                  </mat-panel-title>
-                  <mat-panel-description>
-                     2016/04/22
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-          
-               <div>随着科技的发展，特别是嵌入式系统的飞速发展，智能手机的普及率更是达到了几乎人手一台。为了解决传统考勤带来的诸多问题和不足，本系统提出了使用手机二维码扫描的方式进行考勤的解决方案。该方案利用了现今普遍拥有的智能手机作为硬件基础，在不需要增加任何硬件设备的基础上，实现了低成本、快速、可靠的考勤管理。</div>
-               <div class="text-right">
-                  <button mat-button type="button">
-                      <mat-icon>delete</mat-icon>
-                      <span>删除</span>
-                  </button>
-                  
-               </div>
-              </mat-expansion-panel>
-            </mat-accordion>
-      </div>
-  </div>
-  
+    </div>
+
 </div>
 <button class="fab-button" mat-fab type="button" (click)="openAddProgress()">
-  <mat-icon>add</mat-icon>
+    <mat-icon>add</mat-icon>
 </button>

@@ -11,5 +11,7 @@ export class StudentProgressComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  open(){
+    console.log(1312312)
+  }
 }
