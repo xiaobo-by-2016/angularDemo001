@@ -7,6 +7,7 @@ import {
   requiredSelf, 
   lengthValidator, 
   equalValidator } from '../../utils/validators';
+import { CommonService } from '../../utils/common.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -26,6 +27,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private httpService: HttpService,
+    private commonService: CommonService,
     fb: FormBuilder) {
 
     this.registerFormModel = fb.group({
@@ -110,11 +112,11 @@ export class RegisterComponent implements OnInit {
               console.log(res);
               this.router.navigate(['/login']);
           } else {
-            console.log(res.message);
+           this.commonService.toastError(res.message);
           }
         })
     } else {
-      console.log(this.registerFormModel.value)
+      this.commonService.toastError('注册信息有误~');
     }
   }
 }

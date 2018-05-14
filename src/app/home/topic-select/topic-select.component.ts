@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../../utils/common.service';
 import { HttpService } from '../../utils/http.service';
-import { getLocalStorage } from '../../utils/localStorage';
+import { getLocalStorage, updateByKey } from '../../utils/localStorage';
 
 @Component({
   selector: 'app-topic-select',
@@ -98,6 +98,14 @@ export class TopicSelectComponent implements OnInit {
           if (res.success) {
             this.topicList = res.topicList;
             this.isChecked =res.isChecked;
+            for(let index in  this.topicList){
+              //更新缓存信息
+              if(this.topicList[index].studentAccount == this.userInfo.userAccount){
+                  updateByKey('userInfo','topicId',this.topicList[index].topicId);
+                  updateByKey('userInfo','topicTitle',this.topicList[index].topicTitle);
+                break;
+              }
+            }
           } else {
             this.commonService.toastSuccess(res.message,2000)
           }

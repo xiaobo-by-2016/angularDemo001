@@ -67,6 +67,7 @@ export class TopicManageComponent implements OnInit {
         teacherAccount: this.userInfo.userAccount,
 
       }, 'getTopicsByTecAcc').subscribe(res => {
+       setTimeout(() => {
         this.commonService.hideLoding();
         if (res.success) {
           this.topicList = res.topicList;
@@ -75,6 +76,7 @@ export class TopicManageComponent implements OnInit {
           console.log(res.message)
           this.commonService.toastSuccess(res.message)
         }
+       }, 1000);
       })
   }
 
@@ -85,13 +87,15 @@ export class TopicManageComponent implements OnInit {
         teacherAccount: this.userInfo.userAccount,
         topicId:topicId
       }, 'deleteTopic').subscribe(res => {
-        this.commonService.hideLoding();
-        if (res.success) {
-          this.topicList = res.topicList;
-          this.commonService.toastSuccess('删除成功');
-        } else {
-          this.commonService.toastSuccess(res.message)
-        }
+        setTimeout(() => {
+          this.commonService.hideLoding();
+          if (res.success) {
+            this.topicList = res.topicList;
+            this.commonService.toastSuccess('删除成功');
+          } else {
+            this.commonService.toastSuccess(res.message)
+          }
+        }, 1000);
       })
   }
 
@@ -103,14 +107,16 @@ export class TopicManageComponent implements OnInit {
         teacherAccount: this.userInfo.userAccount,
         strkey:this.keyStr
       }, 'getTopicsByKey').subscribe(res => {
-        this.commonService.hideLoding();
-        if (res.success) {
-          
-          this.topicList = res.topicList;
-          console.log( this.topicList)
-        } else {
-          this.commonService.toastSuccess(res.message,2000000)
-        }
+        setTimeout(() => {
+          this.commonService.hideLoding();
+          if (res.success) {
+            
+            this.topicList = res.topicList;
+            console.log( this.topicList)
+          } else {
+            this.commonService.toastSuccess(res.message,2000000)
+          }
+        }, 1000);
       })
   }
 

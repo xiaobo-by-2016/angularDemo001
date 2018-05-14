@@ -31,8 +31,6 @@
                     <div class="text-right">
 
                         <button mat-button type="button" *ngIf="!topicItem.studentName && !isChecked " (click)="selectTopic(topicItem.topicId)">
-                            {{!topicItem.studentName}}
-                            {{isChecked}}
                             <mat-icon>done</mat-icon>
                             <span>选取</span>
                         </button>

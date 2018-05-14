@@ -30,7 +30,8 @@ export class StudentProgressComponent implements OnInit {
         teacherAccount: this.userInfo.userAccount,
 
       }, 'getTPByTecAcc').subscribe(res => {
-        this.commonService.hideLoding();
+        setTimeout(() => {
+          this.commonService.hideLoding();
         if (res.success) {
           this.topicList = res.topicList;
           this.allList =res.topicList;
@@ -39,6 +40,7 @@ export class StudentProgressComponent implements OnInit {
           console.log(res.message)
           this.commonService.toastSuccess(res.message)
         }
+        }, 1000);
       })
   }
 
