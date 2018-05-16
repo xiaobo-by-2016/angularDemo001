@@ -1,46 +1,52 @@
-<mat-nav-list >
-    <mat-list-item *ngIf="userRole == 2"  (click)="doSelectMenu({
+<mat-nav-list appToggleSideList>
+
+    <mat-list-item appToggleSideItem *ngIf="userRole == 2" (click)="doSelectMenu({
         url:'/home/topic-select',
         title:'题目选取'
-    })"> 
+    })">
         <mat-icon class="color1" mat-list-icon>receipt</mat-icon>
         <h4 mat-line>题目选取</h4>
     </mat-list-item>
-    <mat-list-item *ngIf="userRole == 2"  (click)="doSelectMenu({
+
+    <mat-list-item appToggleSideItem *ngIf="userRole == 2" (click)="doSelectMenu({
         url:'/home/progress-manage',
         title:'进度管理'
     })">
         <mat-icon class="color1" mat-list-icon>timeline</mat-icon>
         <h4 mat-line>进度管理</h4>
     </mat-list-item>
-    <mat-list-item *ngIf="userRole == 1"  (click)="doSelectMenu({
+
+    <mat-list-item appToggleSideItem *ngIf="userRole == 1" (click)="doSelectMenu({
         url:'/home/student-progress',
         title:'学生进度'
     })">
         <mat-icon class="color1" mat-list-icon>timeline</mat-icon>
         <h4 mat-line>学生进度</h4>
     </mat-list-item>
-    <mat-list-item *ngIf="userRole == 1" (click)="doSelectMenu({
+    <mat-list-item appToggleSideItem *ngIf="userRole == 1" (click)="doSelectMenu({
         url:'/home/topic-manage',
         title:'题目管理'
     })">
         <mat-icon class="color1" mat-list-icon>receipt</mat-icon>
         <h4 mat-line>题目管理</h4>
     </mat-list-item>
-    <mat-list-item (click)="doSelectMenu({
+
+    <mat-list-item appToggleSideItem (click)="doSelectMenu({
         url:'/home/account-info',
         title:'个人信息'
     })">
-            <!-- style="background-color:#f5f5f5" -->
+        <!-- style="background-color:#f5f5f5" -->
         <mat-icon class="color1" mat-list-icon>account_circle</mat-icon>
         <h4 mat-line>个人信息</h4>
     </mat-list-item>
-    <mat-list-item (click)="doSelectMenu({
+
+    <mat-list-item appToggleSideItem (click)="doSelectMenu({
         url:'/home/setting',
         title:'设置'
     })">
         <!-- style="background-color:#f5f5f5" -->
-    <mat-icon class="color1" mat-list-icon>settings</mat-icon>
-    <h4 mat-line>设置</h4>
-</mat-list-item>
+        <mat-icon class="color1" mat-list-icon>settings</mat-icon>
+        <h4 mat-line>设置</h4>
+    </mat-list-item>
+    
 </mat-nav-list>

@@ -10,11 +10,11 @@ import { getLocalStorage } from '../../utils/localStorage';
 })
 export class StudentProgressComponent implements OnInit {
   public userInfo;
-  public topicList =[];
+  public topicList = [];
   public allList = [];
-  public keyStr:string ='';
+  public keyStr: string = '';
   constructor(
-    private commonService:CommonService,
+    private commonService: CommonService,
     private httpService: HttpService,
   ) { }
 
@@ -22,8 +22,8 @@ export class StudentProgressComponent implements OnInit {
     this.userInfo = getLocalStorage('userInfo');
     this.getTopicList();
   }
-   /** 教师获取本人设置的毕设题目*/
-   getTopicList() {
+  /** 教师获取本人设置的毕设题目*/
+  getTopicList() {
     this.commonService.showLoading('正在提交...');
     this.httpService.doPost(
       {
@@ -32,44 +32,65 @@ export class StudentProgressComponent implements OnInit {
       }, 'getTPByTecAcc').subscribe(res => {
         setTimeout(() => {
           this.commonService.hideLoding();
-        if (res.success) {
-          this.topicList = res.topicList;
-          this.allList =res.topicList;
-          console.log(this.topicList)
-        } else {
-          console.log(res.message)
-          this.commonService.toastSuccess(res.message)
-        }
+          if (res.success) {
+            this.topicList = res.topicList;
+            this.allList = res.topicList;
+            console.log(this.topicList)
+          } else {
+            console.log(res.message)
+            this.commonService.toastSuccess(res.message)
+          }
         }, 1000);
       })
   }
 
 
-  searchByKey(){
+  searchByKey() {
     this.commonService.showLoading('正在获取...')
     setTimeout(() => {
-      if(this.keyStr){
-        this.topicList =[];
-        for(var index in this.allList){
-          if(this.allList[index].studentName ){
-            if(this.allList[index].topicTitle.indexOf(this.keyStr) !=-1|| this.allList[index].studentName.indexOf(this.keyStr)!=-1){
+      if (this.keyStr) {
+        this.topicList = [];
+        for (var index in this.allList) {
+          if (this.allList[index].studentName) {
+            if (this.allList[index].topicTitle.indexOf(this.keyStr) != -1 || this.allList[index].studentName.indexOf(this.keyStr) != -1) {
               console.log(this.allList[index])
               this.topicList.push(this.allList[index])
             }
-          }else{
-            if(this.allList[index].topicTitle.indexOf(this.keyStr) !=-1){
+          } else {
+            if (this.allList[index].topicTitle.indexOf(this.keyStr) != -1) {
               console.log(this.allList[index])
               this.topicList.push(this.allList[index])
             }
           }
-         
+
         }
         this.commonService.hideLoding()
-      }else{
-        this.topicList =this.allList;
+      } else {
+        this.topicList = this.allList;
         this.commonService.hideLoding()
       }
     }, 1000);
-    
+
   }
+
+  sendNotify(item) {
+    this.commonService.showLoading('正在发送通知...');
+    this.httpService.doPost(
+      {
+        studentPhone:item.studentPhone,
+        studentName:item.studentName,
+        progress:item.proList[0].pro+'%',
+        topicId:item.topicId,
+      }, 'sendNotify').subscribe(res => {
+        setTimeout(() => {
+          this.commonService.hideLoding();
+          if (res.success) {
+            console.log(this.topicList)
+          } else {
+            this.commonService.toastSuccess(res.message)
+          }
+        }, 1000);
+      })
+  }
+
 }

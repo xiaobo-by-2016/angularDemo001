@@ -1,3 +1,5 @@
+import { ToggleSideItemDirective } from './../directives/toggle-side-item.directive';
+import { ToggleSideListDirective } from './../directives/toggle-side-list.directive';
 import { SharedModule } from './../shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { NgModule } from '@angular/core';
@@ -31,7 +33,9 @@ import { AddProgressComponent } from './add-progress/add-progress.component';
     StudentProgressComponent,
     ProgressManageComponent,
     AddTopicComponent,
-    AddProgressComponent
+    AddProgressComponent,
+    ToggleSideListDirective,
+    ToggleSideItemDirective
   ],
   entryComponents: [
     AddTopicComponent,

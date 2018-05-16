@@ -19,9 +19,13 @@ import { HttpService } from './utils/http.service';
 import { ToastComponentsModule } from './utils/toast-components/toast-components.module';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
+    
+    
   ],
   imports: [
     BrowserModule,
