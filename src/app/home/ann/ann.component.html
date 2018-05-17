@@ -1,0 +1,25 @@
+<div class="ann">
+    <div class="ann-head">
+        <div class="head-title">公告信息</div>
+        <button *ngIf="userInfo.roleId == 1" class="head-button " mat-raised-button mat-button (click)="openNewAnn()">
+            <mat-icon class="color1">create</mat-icon>
+            新公告
+        </button>
+    </div>
+    <div class="ann-content">
+        <div class="content-list ">
+            <div class="item" *ngFor="let annItem of annList">
+                <div class="item-head">{{annItem.annTitle}}</div>
+                <div class="item-content">{{annItem.annContent}}</div>
+                <div class="item-time">{{annItem.annTime}}</div>
+                <div *ngIf="userInfo.roleId == 1" class="item-button">
+                    <button mat-raised-button  (click)="deleteAnnById(annItem.annId)">
+                        删除
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

@@ -6,17 +6,17 @@
         <mat-card-content>
             <mat-form-field class="full-width">
                 <input formControlName="topicTitle" matInput placeholder="题目">
-                <mat-error *ngIf="addTopicModel.hasError('required','topicTitle') &&
+                <mat-error *ngIf="addTopicModel.hasError('required',['topicTitle']) &&
                 addTopicModel.get('topicTitle').touched ">
-                    {{addTopicModel.getError('required','topicTitle')?.errInfo}}
+                    {{addTopicModel.getError('required',['topicTitle'])?.errInfo}}
                 </mat-error>
             </mat-form-field>
 
             <mat-form-field class="full-width ">
                 <textarea formControlName="topicContent" class="topic-content " matInput placeholder="详情 "></textarea>
-                <mat-error *ngIf="addTopicModel.hasError('required','topicContent') &&
+                <mat-error *ngIf="addTopicModel.hasError('required',['topicContent']) &&
                 addTopicModel.get('topicContent').touched ">
-                    {{addTopicModel.getError('required','topicContent')?.errInfo}}
+                    {{addTopicModel.getError('required',['topicContent'])?.errInfo}}
                 </mat-error>
             </mat-form-field>
 

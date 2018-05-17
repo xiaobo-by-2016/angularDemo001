@@ -1,8 +1,9 @@
 <div class="progress-manage">
-    <div class="box1 ">
+    <div class="box1 " *ngIf="userInfo.topicTitle">
     毕业设计《{{userInfo.topicTitle}}》---进度列表
 
     </div>
+    <div class="box1" *ngIf="!userInfo.topicTitle">暂未选题</div>
     <div class="box scrollbar">
         <div class="not-pro" *ngIf="proList.length == 0">
             暂无毕业设计进度信息~

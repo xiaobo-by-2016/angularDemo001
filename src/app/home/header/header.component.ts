@@ -13,8 +13,14 @@ export class HeaderComponent implements OnInit {
   private width: number = window.screen.availWidth;
   public isDisabled: boolean = true;
   public userInfo;
+  
+  public screenWidthShow ;
   constructor(private router: Router) {
-
+    if (window.screen.availWidth > 700) {
+      this.screenWidthShow = true;
+    } else {
+      this.screenWidthShow  = false;
+    }
   }
 
   @Input() currentPage: string;

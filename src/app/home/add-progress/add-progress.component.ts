@@ -21,7 +21,7 @@ export class AddProgressComponent implements OnInit {
   ngOnInit() {
     this.proTime = new Date();
     this.addProgressModel = this.fb.group({
-      progressTime: [`${this.proTime.getFullYear()}/${this.proTime.getMonth()}/${this.proTime.getDate()}  ${this.proTime.getHours()}:${this.proTime.getMinutes()}:${this.proTime.getSeconds()}`,[requiredSelf('时间不合法~')]],
+      progressTime: [`${this.proTime.getFullYear()}/${this.proTime.getMonth()+1}/${this.proTime.getDate()}  ${this.proTime.getHours()}:${this.proTime.getMinutes()}:${this.proTime.getSeconds()}`,[requiredSelf('时间不合法~')]],
       progress: ['',[rangeNumberValidator('数值范围1-100',1,100)]],
       progressContent: ['',[requiredSelf('进度详情不能为空~')]]
       

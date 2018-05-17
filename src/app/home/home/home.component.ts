@@ -41,11 +41,11 @@ export class HomeComponent implements OnInit {
       setLocalStorage('loginStatus','noLogin');
       if (this.userInfo.roleId == 1) {
         //教师
-        this.router.navigate(['/home/student-progress']);//默认界面
+        this.router.navigate(['/home/ann']);//默认界面
         this.currentPage = '学生进度';
       } else {
         //学生
-        this.router.navigate(['/home/progress-manage']);//默认界面
+        this.router.navigate(['/home/ann']);//默认界面
         this.currentPage = '进度管理';
       }
     } else {

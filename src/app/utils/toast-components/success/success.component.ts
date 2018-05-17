@@ -7,7 +7,7 @@ import { MAT_SNACK_BAR_DATA } from '@angular/material';
 })
 export class SuccessComponent {
   constructor(
-    @Inject(MAT_SNACK_BAR_DATA) private message
+    @Inject(MAT_SNACK_BAR_DATA) public message
   ) {
 
   }

@@ -1,0 +1,26 @@
+<form    [formGroup]="addAnnModel" (submit)="onSubmit()">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>新增公告:</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field class="full-width">
+                <input type="text" formControlName="annTime"  readonly matInput placeholder="发布时间">
+               
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input type="text" formControlName="annTitle" matInput placeholder="标题">
+               
+            </mat-form-field>
+            <mat-form-field class="full-width ">
+                <textarea class="ann-content" formControlName="annContent" matInput placeholder="内容"></textarea>
+             
+                
+            </mat-form-field>
+            <div class="text-center ">
+                <button type="button " mat-raised-button (click)="cancel()">取消</button>
+                <button type="submit " mat-raised-button>提交</button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</form>

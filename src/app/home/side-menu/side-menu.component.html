@@ -1,5 +1,15 @@
 <mat-nav-list appToggleSideList>
 
+    <mat-list-item appToggleSideItem  (click)="doSelectMenu({
+        url:'/home/ann',
+        title:'公告'
+    })">
+        <mat-icon class="color1" mat-list-icon>bookmark_border</mat-icon>
+        <h4 mat-line *ngIf="userRole == 2">公告</h4>
+        <h4 mat-line *ngIf="userRole == 1">公告管理</h4>
+    </mat-list-item>
+
+
     <mat-list-item appToggleSideItem *ngIf="userRole == 2" (click)="doSelectMenu({
         url:'/home/topic-select',
         title:'题目选取'
@@ -48,5 +58,5 @@
         <mat-icon class="color1" mat-list-icon>settings</mat-icon>
         <h4 mat-line>设置</h4>
     </mat-list-item>
-    
+
 </mat-nav-list>

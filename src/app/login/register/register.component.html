@@ -7,8 +7,8 @@
     <mat-card-content>
       <mat-form-field class="full-width">
         <input formControlName="userAccount" matInput type="text" placeholder="学号/工号">
-        <mat-error [hidden]="!registerFormModel.hasError('length','userAccount')">
-          {{registerFormModel.getError('length','userAccount')?.errInfo}}
+        <mat-error [hidden]="!registerFormModel.hasError('length',['userAccount'])">
+          {{registerFormModel.getError('length',['userAccount'])?.errInfo}}
         </mat-error>
       </mat-form-field>
       <div formGroupName="passwordsGroup">
@@ -21,8 +21,8 @@
         <mat-form-field class="full-width">
           <input formControlName="upConfirm" matInput type="password" placeholder="确认密码">
         </mat-form-field>
-        <mat-error [hidden]="!registerFormModel.hasError('equal','passwordsGroup')">
-          {{registerFormModel.getError('equal','passwordsGroup')?.errInfo}}
+        <mat-error [hidden]="!registerFormModel.hasError('equal',['passwordsGroup'])">
+          {{registerFormModel.getError('equal',['passwordsGroup'])?.errInfo}}
         </mat-error>
       </div>
       <mat-form-field>
@@ -34,9 +34,9 @@
 
       <mat-form-field class="full-width">
         <input formControlName="userPhone" matInput type="text" placeholder="手机号">
-        <mat-error [hidden]="(!registerFormModel.hasError('required','userPhone') 
-                              &&!registerFormModel.hasError('mobile','userPhone'))">
-          {{registerFormModel.getError('required','userPhone')?.errInfo || registerFormModel.getError('mobile','userPhone')?.errInfo}}
+        <mat-error [hidden]="(!registerFormModel.hasError('required',['userPhone'])
+                              &&!registerFormModel.hasError('mobile',['userPhone']))">
+          {{registerFormModel.getError('required',['userPhone'])?.errInfo || registerFormModel.getError('mobile',['userPhone'])?.errInfo}}
         </mat-error>
       </mat-form-field>
 
@@ -45,8 +45,8 @@
         <button type="button"  class="validate-code" mat-button matSuffix mat-raised-button (click)="getValidateCdoe()" [disabled]='isGetCode'>
           {{valideteCodeInfo.info}}
         </button>
-        <mat-error [hidden]="!registerFormModel.hasError('required','code')">
-          {{registerFormModel.getError('required','code')?.errInfo}}
+        <mat-error [hidden]="!registerFormModel.hasError('required',['code'])">
+          {{registerFormModel.getError('required',['code'])?.errInfo}}
         </mat-error>
       </mat-form-field>
       <button type="submit" mat-raised-button>完成注册</button>

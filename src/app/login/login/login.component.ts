@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   }
   onSubmit() {
     
-    this.commonService.showLoading('正在登陆...')
+    this.commonService.showLoading('正在登录...')
     this.httpService.doPost(this.loginFormModel.value, 'login').subscribe(res => {
       console.log(res)
       if (res.success) {

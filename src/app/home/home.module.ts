@@ -15,6 +15,8 @@ import { StudentProgressComponent } from './student-progress/student-progress.co
 import { ProgressManageComponent } from './progress-manage/progress-manage.component';
 import { AddTopicComponent } from './add-topic/add-topic.component';
 import { AddProgressComponent } from './add-progress/add-progress.component';
+import { AnnComponent } from './ann/ann.component';
+import { AddAnnComponent } from './add-ann/add-ann.component';
 
 @NgModule({
   imports: [
@@ -35,11 +37,14 @@ import { AddProgressComponent } from './add-progress/add-progress.component';
     AddTopicComponent,
     AddProgressComponent,
     ToggleSideListDirective,
-    ToggleSideItemDirective
+    ToggleSideItemDirective,
+    AnnComponent,
+    AddAnnComponent
   ],
   entryComponents: [
     AddTopicComponent,
-    AddProgressComponent
+    AddProgressComponent,
+    AddAnnComponent
   ]
 })
 export class HomeModule {

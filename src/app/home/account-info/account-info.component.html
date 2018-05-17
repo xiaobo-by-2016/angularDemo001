@@ -6,7 +6,7 @@
                                         <label>姓名</label>
                                         <input formControlName="userName" placeholder="请输入您的姓名">
                                         <div *ngIf="
-                                        accountInfoModel.hasError('required','userName') &&
+                                        accountInfoModel.hasError('required',['userName']) &&
                                         accountInfoModel.get('userName').touched" class="error">
                                                 *
                                         </div>
@@ -41,7 +41,7 @@
                                                 </mat-select>
                                         </mat-form-field>
                                         <div *ngIf="
-                                        accountInfoModel.hasError('required','collegeId') &&
+                                        accountInfoModel.hasError('required',['collegeId']) &&
                                         accountInfoModel.get('collegeId').touched" class="error">
                                                 *
                                         </div>
@@ -56,7 +56,7 @@
                                         <label>邮箱</label>
                                         <input formControlName="email" placeholder="请输入您的邮箱">
                                         <div *ngIf="
-                                        accountInfoModel.hasError('email','email') &&
+                                        accountInfoModel.hasError('email',['email']) &&
                                         accountInfoModel.get('email').touched" class="error">
                                                 *
                                         </div>

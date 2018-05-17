@@ -6,7 +6,7 @@
                                         <label>旧密码</label>
                                         <input formControlName="oldPassword" type="password" placeholder="请输入您的旧密码">
                                         <div *ngIf="
-                                        settingModel.hasError('length','oldPassword') &&
+                                        settingModel.hasError('length',['oldPassword']) &&
                                         settingModel.get('oldPassword').touched" class="error">
                                                 *
                                         </div>
@@ -25,7 +25,7 @@
                                                 <label>确认密码</label>
                                                 <input formControlName="newPassword2" type="password" placeholder="请确认您的新密码">
                                         </div>
-                                        <div *ngIf="settingModel.hasError('equal','passwordsGroup')" class="error" style="text-align:center">
+                                        <div *ngIf="settingModel.hasError('equal',['passwordsGroup'])" class="error" style="text-align:center">
                                                 <label></label>
                                                 新密码与确认密码不同
                                         </div>

@@ -1,3 +1,4 @@
+import { AnnComponent } from './ann/ann.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -18,7 +19,7 @@ const routes: Routes = [
         {path:'topic-manage',component:TopicManageComponent},
         {path:'student-progress',component:StudentProgressComponent},
         {path:'progress-manage',component:ProgressManageComponent},
-
+        {path:'ann',component:AnnComponent}
     ]}
 ];
 

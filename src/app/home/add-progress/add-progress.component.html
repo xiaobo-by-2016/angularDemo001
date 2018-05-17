@@ -6,15 +6,15 @@
         <mat-card-content>
             <mat-form-field class="full-width">
                 <input type="text" class="input-readonly" readonly formControlName="progressTime" matInput placeholder="时间">
-                <mat-error *ngIf="addProgressModel.hasError('required','progressTime') &&
+                <mat-error *ngIf="addProgressModel.hasError('required',['progressTime']) &&
                 addProgressModel.get('progressTime').touched ">
-                    {{addProgressModel.getError('required','progressTime')?.errInfo}}
+                    {{addProgressModel.getError('required',['progressTime'])?.errInfo}}
                 </mat-error>
               
             </mat-form-field>
             <mat-form-field class="">
                 <input type="number"  min="1" max="100" formControlName="progress" matInput placeholder="当前进度">
-                <mat-error *ngIf="addProgressModel.hasError('rangeNumber','progress') &&
+                <mat-error *ngIf="addProgressModel.hasError('rangeNumber',['progress']) &&
                 addProgressModel.get('progress').touched ">
                     {{addProgressModel.getError('rangeNumber','progress')?.errInfo}}
                 </mat-error>
@@ -22,9 +22,9 @@
             </mat-form-field>
             <mat-form-field class="full-width ">
                 <textarea formControlName="progressContent" class="progress-content" matInput placeholder="进度详情 "></textarea>
-                <mat-error *ngIf="addProgressModel.hasError('required','progressContent') &&
+                <mat-error *ngIf="addProgressModel.hasError('required',['progressContent']) &&
                 addProgressModel.get('progressContent').touched ">
-                    {{addProgressModel.getError('required','progressContent')?.errInfo}}
+                    {{addProgressModel.getError('required',['progressContent'])?.errInfo}}
                 </mat-error>
                 
             </mat-form-field>
