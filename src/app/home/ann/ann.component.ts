@@ -71,7 +71,7 @@ export class AnnComponent implements OnInit {
     this.httpService.doPost(
       {
         topicId: this.userInfo.topicId
-      }, 'addAnn').subscribe(res => {
+      }, 'getAnnListByTopicId').subscribe(res => {
         setTimeout(() => {
           this.commonService.hideLoding();
           if (res.success) {
